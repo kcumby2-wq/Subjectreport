@@ -1831,6 +1831,248 @@
   }
   .transcript-caption a:hover { color: var(--cream-bright); border-color: var(--cream); }
   @media (max-width: 760px) { .transcript-sample { padding: 80px 0; } }
+
+  /* ═══════════════════════════════════════════
+     CHECKOUT OVERLAY
+  ═══════════════════════════════════════════ */
+  .co-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    background: var(--navy-900);
+    overflow-y: auto;
+  }
+
+  .co-overlay.open { display: block; }
+
+  .co-wrap {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Left panel — dark branded */
+  .co-left {
+    width: 42%;
+    background: var(--navy-900);
+    border-right: 1px solid rgba(242,238,227,0.12);
+    padding: 52px 44px 60px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .co-left::before {
+    content: "";
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(78,196,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Right panel — white like Stripe */
+  .co-right {
+    flex: 1;
+    background: #ffffff;
+    padding: 52px 48px 60px;
+    display: flex;
+    flex-direction: column;
+    color: #111827;
+  }
+
+  @media (max-width: 720px) {
+    .co-wrap    { flex-direction: column; }
+    .co-left    { width: 100%; padding: 28px 20px 24px; border-right: none; border-bottom: 1px solid rgba(242,238,227,0.12); }
+    .co-right   { padding: 28px 20px 60px; }
+  }
+
+  /* Left: brand */
+  .co-brand {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 44px;
+  }
+
+  .co-brand-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-bright) 100%);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Anton", sans-serif;
+    font-size: 13px; color: var(--ink);
+    letter-spacing: 0.05em; flex-shrink: 0;
+  }
+
+  .co-brand-name {
+    font-family: "Anton", sans-serif;
+    font-size: 17px; letter-spacing: 0.05em; color: var(--cream);
+  }
+
+  .co-brand-name span { color: var(--cyan-bright); }
+
+  /* Left: amounts */
+  .co-pay-label   { font-size: 13px; color: var(--fog); margin-bottom: 5px; }
+  .co-pay-amount  { font-size: 42px; font-weight: 700; color: var(--cream); letter-spacing: -0.02em; line-height: 1; margin-bottom: 5px; }
+  .co-pay-cadence { font-size: 13px; color: var(--cyan); margin-bottom: 32px; }
+
+  /* Left: line item */
+  .co-line { padding: 16px 0; border-top: 1px solid rgba(242,238,227,0.12); }
+
+  .co-line-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 12px; margin-bottom: 6px;
+  }
+
+  .co-line-name  { font-weight: 600; font-size: 14px; color: var(--cream); }
+  .co-line-price { font-weight: 600; font-size: 14px; color: var(--cream); white-space: nowrap; }
+  .co-line-desc  { font-size: 12px; color: var(--fog); line-height: 1.5; }
+
+  /* Left: totals */
+  .co-totals { padding-top: 18px; border-top: 1px solid rgba(242,238,227,0.12); }
+
+  .co-total-row {
+    display: flex; justify-content: space-between;
+    font-size: 13px; color: var(--fog); margin-bottom: 7px;
+  }
+
+  .co-total-row.final {
+    font-size: 15px; font-weight: 700; color: var(--cream);
+    padding-top: 11px; border-top: 1px solid rgba(242,238,227,0.12); margin-top: 4px;
+  }
+
+  .co-secure {
+    margin-top: 28px; font-size: 11px;
+    color: rgba(242,238,227,0.3);
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .co-secure svg { color: var(--cyan); flex-shrink: 0; }
+
+  .co-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--fog);
+    background: none; border: none; cursor: pointer;
+    margin-top: auto; padding-top: 28px;
+    transition: color 0.2s; font-family: inherit;
+  }
+
+  .co-back:hover { color: var(--cream); }
+
+  /* Right: form typography */
+  .co-form-heading {
+    font-size: 22px; font-weight: 700; color: #111827;
+    margin-bottom: 5px; letter-spacing: -0.01em;
+  }
+
+  .co-form-sub { font-size: 13px; color: #6b7280; margin-bottom: 26px; }
+
+  .co-section-lbl {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    color: #374151; margin-bottom: 13px; margin-top: 22px;
+  }
+
+  /* Right: fields */
+  .co-field { margin-bottom: 13px; }
+
+  .co-field label {
+    display: block; font-size: 13px; font-weight: 500;
+    color: #374151; margin-bottom: 5px;
+  }
+
+  .co-field input,
+  .co-field select {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid #d1d5db;
+    border-radius: 7px;
+    padding: 11px 13px;
+    color: #111827;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    transition: border-color 0.18s, box-shadow 0.18s;
+    -webkit-appearance: none; appearance: none;
+  }
+
+  .co-field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    padding-right: 34px; cursor: pointer;
+  }
+
+  .co-field select option { background: #fff; color: #111827; }
+  .co-field input::placeholder { color: #9ca3af; }
+
+  .co-field input:focus,
+  .co-field select:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(47,163,232,0.15);
+  }
+
+  .co-field input.co-err,
+  .co-field select.co-err {
+    border-color: #cc3333;
+    box-shadow: 0 0 0 3px rgba(204,51,51,0.1);
+  }
+
+  .co-field-err { font-size: 12px; color: #cc3333; margin-top: 4px; display: none; }
+  .co-field-err.show { display: block; }
+  .co-field-hint { font-size: 11px; color: #9ca3af; margin-top: 4px; }
+
+  .co-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .co-two-col { grid-template-columns: 1fr; } }
+
+  /* Right: submit */
+  .co-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-bright) 100%);
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+    font-size: 15px; font-weight: 700;
+    padding: 14px 20px;
+    border: none; border-radius: 8px; cursor: pointer;
+    margin-top: 26px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(47,163,232,0.3);
+  }
+
+  .co-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(47,163,232,0.4); }
+  .co-submit:active:not(:disabled) { transform: translateY(0); }
+  .co-submit:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .co-submit .co-spin {
+    width: 17px; height: 17px;
+    border: 2px solid rgba(10,23,41,0.2);
+    border-top-color: var(--ink);
+    border-radius: 50%;
+    animation: coSpin 0.65s linear infinite;
+    display: none;
+  }
+
+  .co-submit.loading .co-spin { display: block; }
+  .co-submit.loading .co-lbl  { display: none; }
+  @keyframes coSpin { to { transform: rotate(360deg); } }
+
+  .co-pay-note {
+    font-size: 11px; color: #9ca3af;
+    text-align: center; margin-top: 11px;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+  }
+
+  .co-pay-note svg { color: #6b7280; }
+
+  .co-err-banner {
+    background: #fef2f2; border: 1px solid #fca5a5;
+    border-radius: 7px; padding: 11px 14px;
+    font-size: 13px; color: #b91c1c;
+    margin-bottom: 14px; display: none;
+  }
+
+  .co-err-banner.show { display: block; }
 </style>
 </head>
 <body>
@@ -3125,7 +3367,7 @@
           <label for="biChallenge">Biggest recruiting challenge right now <span style="color:var(--fog);font-weight:400">(optional)</span></label>
           <textarea id="biChallenge" rows="3" placeholder="e.g. Coaches aren\u2019t responding. I don\u2019t know where to start. I\u2019ve had interest but no offers…"></textarea>
         </div>
-        <button type="submit" class="mod-submit" id="intakeSubmitBtn">Tell us your situation &amp; open scheduler →</button>
+        <button type="submit" class="mod-submit" id="intakeSubmitBtn" id="intakeSubmitBtn">Tell us your situation &amp; open scheduler →</button>
       </form>
     `;
     document.getElementById('modal').classList.add('open');
@@ -4012,24 +4254,164 @@
   })();
 
 
-  async function directCheckout(planKey, btn) {
-    if (btn) { btn.disabled = true; btn.textContent = "Opening checkout…"; }
+  const CO_PLANS = {
+    transcript: {
+      name:    "Player Transcript",
+      desc:    "Player transcript (downloadable), recruiting tape, written player summary, and graded scouting evaluation. 48-hour turnaround.",
+      price:   "$249",
+      amount:  "249.00",
+      cadence: "One-time payment",
+      link:    "https://buy.stripe.com/cNi14p9Wt5xLdtt9Vl6Ri00",
+    },
+    program: {
+      name:    "Recruiting Program",
+      desc:    "6-week program — weekly sessions, personalized blueprint, advanced film breakdown, target school list, outreach templates, live Q&A.",
+      price:   "$1,500",
+      amount:  "1,500.00",
+      cadence: "One-time · 6 weeks",
+      link:    "https://buy.stripe.com/14A4gB3y50dr3ST3wX6Ri01",
+    },
+    full: {
+      name:    "College Placement",
+      desc:    "Complete package — 6-week program, 1:1 placement specialist, NIL readiness, media strategy, private coaches database, personalized campaign rollout.",
+      price:   "$5,000",
+      amount:  "5,000.00",
+      cadence: "One-time · Full package",
+      link:    "https://buy.stripe.com/4gM7sN3y5gcp9dd3wX6Ri02",
+    },
+    prospect: {
+      name:    "College Directory",
+      desc:    "Monthly access to the full coaches database — D1, FCS, D2, D3, JUCO, NAIA, and post-grad academies. Search by level and region.",
+      price:   "$99",
+      amount:  "99.00",
+      cadence: "Per month · Cancel anytime",
+      link:    "https://buy.stripe.com/14AcN70lTe4h8996J96Ri03",
+    },
+  };
+
+  let _coPlanKey = null;
+
+  function directCheckout(planKey) {
+    const plan = CO_PLANS[planKey];
+    if (!plan) return;
+    _coPlanKey = planKey;
     trackEvent("direct_checkout_click", { pkg: planKey });
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planKey, returnUrl: window.location.pathname }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data?.checkout?.url) throw new Error(data?.error || "Checkout unavailable");
-      window.location.href = data.checkout.url;
-    } catch (err) {
-      console.error(err);
-      if (btn) { btn.disabled = false; btn.textContent = "⚡ Pay now →"; }
-      bookCall();
-    }
+
+    // Populate left panel
+    document.getElementById("coAmount").textContent   = plan.price;
+    document.getElementById("coCadence").textContent  = plan.cadence;
+    document.getElementById("coLineName").textContent = plan.name;
+    document.getElementById("coLinePrice").textContent= plan.price;
+    document.getElementById("coLineDesc").textContent = plan.desc;
+    document.getElementById("coSubtotal").textContent = plan.price;
+    document.getElementById("coTotal").textContent    = "$" + plan.amount;
+
+    // Reset form
+    document.getElementById("coForm").reset();
+    ["coFn","coLn","coEm","coSp","coCy"].forEach(id => {
+      document.getElementById(id).classList.remove("co-err");
+      document.getElementById(id + "-e").classList.remove("show");
+    });
+    document.getElementById("coErrBanner").classList.remove("show");
+    const btn = document.getElementById("coSubmit");
+    btn.disabled = false;
+    btn.classList.remove("loading");
+
+    // Open overlay
+    const ov = document.getElementById("coOverlay");
+    ov.classList.add("open");
+    ov.scrollTop = 0;
+    document.body.style.overflow = "hidden";
+    document.getElementById("coFn").focus();
   }
+
+  function closeCheckout() {
+    document.getElementById("coOverlay").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  // Close on Escape
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeCheckout();
+  });
+
+  // Form validation & submit
+  (function() {
+    const RULES = [
+      { id: "coFn", check: v => v.trim().length > 0,                        msg: "Required" },
+      { id: "coLn", check: v => v.trim().length > 0,                        msg: "Required" },
+      { id: "coEm", check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), msg: "Enter a valid email" },
+      { id: "coSp", check: v => v.trim().length > 0,                        msg: "Required" },
+      { id: "coCy", check: v => v !== "",                                   msg: "Select your class year" },
+    ];
+
+    function validateCo() {
+      let ok = true;
+      RULES.forEach(({ id, check, msg }) => {
+        const el  = document.getElementById(id);
+        const err = document.getElementById(id + "-e");
+        if (!check(el.value)) {
+          el.classList.add("co-err"); err.textContent = msg; err.classList.add("show"); ok = false;
+        } else {
+          el.classList.remove("co-err"); err.classList.remove("show");
+        }
+      });
+      return ok;
+    }
+
+    RULES.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener("input",  () => { el.classList.remove("co-err"); document.getElementById(id + "-e").classList.remove("show"); });
+        el.addEventListener("change", () => { el.classList.remove("co-err"); document.getElementById(id + "-e").classList.remove("show"); });
+      }
+    });
+
+    document.addEventListener("submit", async function(e) {
+      if (e.target.id !== "coForm") return;
+      e.preventDefault();
+      if (document.getElementById("coHp").value) return;
+      if (!validateCo()) return;
+
+      const btn    = document.getElementById("coSubmit");
+      const banner = document.getElementById("coErrBanner");
+      btn.disabled = true;
+      btn.classList.add("loading");
+      banner.classList.remove("show");
+
+      const plan  = CO_PLANS[_coPlanKey];
+      const first = document.getElementById("coFn").value.trim();
+      const last  = document.getElementById("coLn").value.trim();
+      const email = document.getElementById("coEm").value.trim();
+      const phone = document.getElementById("coPh").value.trim();
+      const sport = document.getElementById("coSp").value.trim();
+      const year  = document.getElementById("coCy").value;
+      const film  = document.getElementById("coFl").value.trim();
+
+      // Save to Supabase (non-blocking)
+      try {
+        await fetch("https://nebdqnlpuxcfwmyvmyie.supabase.co/rest/v1/athletes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lYmRxbmxwdXhjZndteXZteWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0NTgyNjUsImV4cCI6MjA5MjAzNDI2NX0.XMEYpNiZ8NdVPMlgQphwcY5S-Pq7HsBMq48CeZD6Ac4",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lYmRxbmxwdXhjZndteXZteWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0NTgyNjUsImV4cCI6MjA5MjAzNDI2NX0.XMEYpNiZ8NdVPMlgQphwcY5S-Pq7HsBMq48CeZD6Ac4",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify({
+            name: first + " " + last, email, phone, sport,
+            class_year: year, film_link: film,
+            package: _coPlanKey, status: "checkout_started",
+            created_at: new Date().toISOString()
+          })
+        });
+      } catch (_) {}
+
+      // Send to Stripe with email pre-filled
+      window.location.href = plan.link + "?prefilled_email=" + encodeURIComponent(email);
+    });
+  })();
+
   document.addEventListener('click', (event) => {
     const trigger = event.target.closest('a, button');
     if (!trigger) return;
@@ -4049,5 +4431,110 @@
   });
 </script>
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<!-- ═══════════════════ CHECKOUT OVERLAY ═══════════════════ -->
+<div id="coOverlay" class="co-overlay" role="dialog" aria-modal="true" aria-label="Checkout">
+  <div class="co-wrap">
+
+    <!-- LEFT -->
+    <div class="co-left">
+      <div class="co-brand">
+        <div class="co-brand-icon">SR</div>
+        <div class="co-brand-name">Subject<span>report</span></div>
+      </div>
+      <div class="co-pay-label">Pay Subjectreport</div>
+      <div class="co-pay-amount" id="coAmount"></div>
+      <div class="co-pay-cadence" id="coCadence"></div>
+      <div class="co-line">
+        <div class="co-line-header">
+          <span class="co-line-name" id="coLineName"></span>
+          <span class="co-line-price" id="coLinePrice"></span>
+        </div>
+        <div class="co-line-desc" id="coLineDesc"></div>
+      </div>
+      <div class="co-totals">
+        <div class="co-total-row"><span>Subtotal</span><span id="coSubtotal"></span></div>
+        <div class="co-total-row final"><span>Total due</span><span id="coTotal"></span></div>
+      </div>
+      <div class="co-secure">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Secured by 256-bit SSL encryption
+      </div>
+      <button type="button" class="co-back" onclick="closeCheckout()">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Back to packages
+      </button>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="co-right">
+      <div class="co-form-heading">Complete your order</div>
+      <div class="co-form-sub">Fill in your details &mdash; you'll be taken to secure payment next.</div>
+      <div id="coErrBanner" class="co-err-banner"></div>
+      <form id="coForm" novalidate>
+        <div class="co-section-lbl">Contact info</div>
+        <div class="co-two-col">
+          <div class="co-field">
+            <label for="coFn">First name *</label>
+            <input id="coFn" type="text" placeholder="Marcus" autocomplete="given-name" />
+            <div class="co-field-err" id="coFn-e">Required</div>
+          </div>
+          <div class="co-field">
+            <label for="coLn">Last name *</label>
+            <input id="coLn" type="text" placeholder="Johnson" autocomplete="family-name" />
+            <div class="co-field-err" id="coLn-e">Required</div>
+          </div>
+        </div>
+        <div class="co-field">
+          <label for="coEm">Email address *</label>
+          <input id="coEm" type="email" placeholder="you@example.com" autocomplete="email" />
+          <div class="co-field-err" id="coEm-e">Enter a valid email</div>
+        </div>
+        <div class="co-field">
+          <label for="coPh">Phone number</label>
+          <input id="coPh" type="tel" placeholder="(555) 000-0000" autocomplete="tel" />
+        </div>
+        <div class="co-section-lbl">Athlete info</div>
+        <div class="co-two-col">
+          <div class="co-field">
+            <label for="coSp">Sport &amp; position *</label>
+            <input id="coSp" type="text" placeholder="Football - WR" />
+            <div class="co-field-err" id="coSp-e">Required</div>
+          </div>
+          <div class="co-field">
+            <label for="coCy">Class year *</label>
+            <select id="coCy">
+              <option value="">Select year</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+              <option value="2030">2030</option>
+              <option value="postgrad">Post-grad / Transfer</option>
+            </select>
+            <div class="co-field-err" id="coCy-e">Required</div>
+          </div>
+        </div>
+        <div class="co-field">
+          <label for="coFl">Hudl / film link <span style="color:#9ca3af;font-weight:400">(optional)</span></label>
+          <input id="coFl" type="url" placeholder="https://hudl.com/video/..." />
+          <div class="co-field-hint">Share your highlight reel so our staff can review your film.</div>
+        </div>
+        <input id="coHp" type="text" style="display:none" tabindex="-1" autocomplete="off" />
+        <button type="submit" class="co-submit" id="coSubmit">
+          <span class="co-lbl">Proceed to payment &rarr;</span>
+          <span class="co-spin"></span>
+        </button>
+        <div class="co-pay-note">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Powered by Stripe &middot; Your card details are never stored here
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+<!-- ═══════════════════ END CHECKOUT OVERLAY ═══════════════════ -->
 </body>
-</html
+</html>
