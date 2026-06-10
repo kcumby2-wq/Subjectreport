@@ -559,6 +559,18 @@
   .pkg button:hover { background: var(--navy-700); }
   .pkg.featured button { background: var(--cyan); color: var(--navy-900); }
   .pkg.featured button:hover { background: var(--cyan-bright); transform: translateY(-2px); box-shadow: 0 10px 30px var(--cyan-glow); }
+  .pkg-pay-btn {
+    display: flex; width: 100%; margin-top: 10px;
+    padding: 13px; border-radius: 999px;
+    background: transparent; border: 1px solid rgba(242,238,227,0.22);
+    color: var(--cream-bright); font-family: "Inter", sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+    align-items: center; justify-content: center; gap: 8px;
+  }
+  .pkg-pay-btn:hover { background: rgba(78,196,255,0.1); border-color: var(--cyan-bright); color: var(--cyan-bright); }
+  .pkg.featured .pkg-pay-btn { border-color: rgba(242,238,227,0.3); }
+  .pkg-pay-btn:disabled { opacity: 0.5; cursor: wait; }
   @media (max-width: 960px) {
     .pkg-grid { grid-template-columns: 1fr; max-width: 560px; }
   }
@@ -2086,6 +2098,7 @@
           <li>Graded evaluation (verified scouting report)</li>
         </ul>
         <button type="button" onclick="bookCall()">Book a call →</button>
+        <button type="button" class="pkg-pay-btn" onclick="directCheckout('transcript', this)">⚡ Pay now →</button>
       </div>
 
       <!-- 2. RECRUITING PROGRAM -->
@@ -2103,6 +2116,7 @@
           <li>Live group Q&amp;A with recruiting staff</li>
         </ul>
         <button type="button" onclick="bookCall()">Book a call →</button>
+        <button type="button" class="pkg-pay-btn" onclick="directCheckout('program', this)">⚡ Pay now →</button>
       </div>
 
       <!-- 3. FULL ATHLETE PACKAGE (featured) -->
@@ -2124,6 +2138,7 @@
           <li>Access to the complete college coaches directory (all American football programs, all divisions)</li>
         </ul>
         <button type="button" onclick="bookCall()">Book a call →</button>
+        <button type="button" class="pkg-pay-btn" onclick="directCheckout('full', this)">⚡ Pay now →</button>
       </div>
     </div>
 
@@ -2299,6 +2314,7 @@
           </div>
           <p class="prospect-billing">Billed monthly for coaches database access. Cancel anytime.</p>
           <button class="prospect-cta" onclick="openModal('prospect')">Get Database Access →</button>
+          <button type="button" class="pkg-pay-btn" style="margin-top:12px;" onclick="directCheckout('prospect', this)">⚡ Subscribe now →</button>
           <noscript>
             <div class="no-js-booking"><a href="booking-fallback.html">Book without JavaScript</a></div>
           </noscript>
@@ -3995,6 +4011,25 @@
     applyVisibility();
   })();
 
+
+  async function directCheckout(planKey, btn) {
+    if (btn) { btn.disabled = true; btn.textContent = "Opening checkout…"; }
+    trackEvent("direct_checkout_click", { pkg: planKey });
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ planKey, returnUrl: window.location.pathname }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data?.checkout?.url) throw new Error(data?.error || "Checkout unavailable");
+      window.location.href = data.checkout.url;
+    } catch (err) {
+      console.error(err);
+      if (btn) { btn.disabled = false; btn.textContent = "⚡ Pay now →"; }
+      bookCall();
+    }
+  }
   document.addEventListener('click', (event) => {
     const trigger = event.target.closest('a, button');
     if (!trigger) return;
@@ -4015,4 +4050,4 @@
 </script>
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
-</html>
+</html
