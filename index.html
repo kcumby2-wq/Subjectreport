@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<center><!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -227,33 +227,47 @@
   .mobile-nav .mob-cta:hover { background: var(--cyan-bright); }
 
   /* HERO */
-  .hero { padding: 120px 0 140px; text-align: center; position: relative; }
+  .hero { padding: 120px 0 140px; text-align: left; position: relative; overflow: hidden; }
+  .hero-media {
+    position: absolute; inset: 0; z-index: 0;
+    overflow: hidden;
+  }
+  .hero-media-video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-media-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,23,41,0.55) 0%, rgba(10,23,41,0.82) 65%, var(--navy-900) 100%);
+  }
+  .hero .wrap { position: relative; z-index: 1; }
   .hero .eyebrow-wrap {
     display: flex; justify-content: space-between; align-items: center;
     margin-bottom: 60px;
   }
   .hero h1 {
     font-family: "Anton", sans-serif;
-    font-size: clamp(72px, 11.5vw, 184px);
-    line-height: 0.88; letter-spacing: 0.005em;
+    font-size: clamp(40px, 6.5vw, 104px);
+    line-height: 0.92; letter-spacing: 0.005em;
     text-transform: uppercase; color: var(--cream-bright);
     text-shadow: 0 2px 30px rgba(78, 196, 255, 0.15);
-    max-width: 1100px; margin: 0 auto;
+    max-width: 760px; margin: 0;
   }
   .hero h1 .cyan-accent { color: var(--cyan-bright); text-shadow: 0 0 40px var(--cyan-glow); }
   .hero .sub {
-    font-size: 20px; font-weight: 400;
-    color: var(--fog); max-width: 620px;
-    margin: 36px auto 0; line-height: 1.5;
+    font-size: 17px; font-weight: 400;
+    color: var(--fog); max-width: 540px;
+    margin: 28px 0 0; line-height: 1.5;
   }
   .hero .sub .mobile-only { display: none; }
   .hero .hero-cta {
-    margin-top: 56px; display: flex; gap: 16px;
-    justify-content: center; flex-wrap: wrap;
+    margin-top: 40px; display: flex; gap: 16px;
+    justify-content: flex-start; flex-wrap: wrap;
   }
   .hero-sample-link {
-    margin-top: 20px;
-    text-align: center;
+    margin-top: 18px;
+    text-align: left;
   }
   .hero-sample-link a {
     color: rgba(242, 238, 227, 0.5);
@@ -266,22 +280,22 @@
   .hero-sample-link a:hover { color: var(--cyan-bright); border-color: var(--cyan-bright); }
   .hero-proof {
     list-style: none;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 18px;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 16px;
   }
   .hero-proof li {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 14px;
+    padding: 9px 13px;
     border-radius: 999px;
     background: rgba(242, 238, 227, 0.08);
     border: 1px solid rgba(242, 238, 227, 0.14);
     color: var(--cream-bright);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.03em;
   }
@@ -311,27 +325,246 @@
   }
   .hero .btn-ghost:hover { background: rgba(242, 238, 227, 0.12); border-color: var(--cream); }
   .hero .meta-row {
-    margin-top: 80px; display: grid;
+    margin-top: 56px; display: grid;
     grid-template-columns: repeat(3, 1fr); gap: 0;
-    max-width: 680px; margin-left: auto; margin-right: auto;
+    max-width: 520px; margin-left: 0; margin-right: auto;
   }
   .hero .meta-row > div {
-    padding: 0 20px; border-right: 1px solid var(--fog-line);
-    text-align: center;
+    padding: 0 20px 0 0; border-right: 1px solid var(--fog-line);
+    text-align: left;
   }
+  .hero .meta-row > div:first-child { padding-left: 0; }
   .hero .meta-row > div:last-child { border-right: 0; }
   .hero .meta-row .num {
     font-family: "Anton", sans-serif;
-    font-size: 56px; line-height: 0.9; color: var(--cyan-bright);
+    font-size: 40px; line-height: 0.9; color: var(--cyan-bright);
   }
   .hero .meta-row .label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--fog); margin-top: 10px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--fog); margin-top: 8px;
   }
   @media (max-width: 700px) {
     .hero { padding: 60px 0 80px; }
-    .hero .meta-row { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+    .hero .meta-row { grid-template-columns: 1fr 1fr; gap: 24px 0; max-width: 100%; }
     .hero .meta-row > div:nth-child(2) { border-right: 0; }
+  }
+
+  /* ===== ACTION REEL — MEDIA CAROUSEL ===== */
+  .action-reel { padding: 140px 0 120px; border-top: 1px solid var(--fog-line); }
+  .action-reel .head { text-align: center; margin-bottom: 56px; }
+  .action-reel .head .eyebrow { display: block; margin-bottom: 18px; }
+  .action-reel h2 {
+    font-family: "Anton", sans-serif;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--cream-bright);
+  }
+  .action-reel h2 .line2 { display: block; color: var(--cyan-bright); }
+  .reel-outer { position: relative; max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+  .reel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .reel-track::-webkit-scrollbar { display: none; }
+  .reel-slide {
+    position: relative;
+    flex: 0 0 auto;
+    width: 280px;
+    height: 360px;
+    border-radius: 20px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    background: linear-gradient(135deg, var(--navy-700) 0%, var(--navy-900) 100%);
+    border: 1px solid var(--glass-border);
+  }
+  .reel-slide img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .reel-caption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 18px 18px 16px;
+    background: linear-gradient(180deg, transparent 0%, rgba(10,23,41,0.88) 80%);
+    color: var(--cream-bright);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .reel-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    color: var(--cream-bright); font-size: 22px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s;
+    z-index: 2;
+  }
+  .reel-arrow:hover { background: rgba(78,196,255,0.12); border-color: var(--cyan-bright); color: var(--cyan-bright); }
+  .reel-arrow.prev { left: 0; }
+  .reel-arrow.next { right: 0; }
+  @media (max-width: 760px) {
+    .action-reel { padding: 90px 0 80px; }
+    .reel-slide { width: 220px; height: 290px; }
+    .reel-arrow { display: none; }
+  }
+
+  /* ===== MEDIA BREAK — FULL-BLEED PHOTO CAROUSEL ===== */
+  .media-break {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/7;
+    overflow: hidden;
+    background: var(--navy-800);
+  }
+  .media-break-track {
+    display: flex;
+    height: 100%;
+    will-change: transform;
+    transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .media-break-slide { min-width: 100%; height: 100%; position: relative; flex-shrink: 0; }
+  .media-break-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block; opacity: 0.85;
+  }
+  .media-break-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,23,41,0.35) 0%, rgba(10,23,41,0.05) 40%, rgba(10,23,41,0.65) 100%);
+    pointer-events: none;
+  }
+  .media-break-btn {
+    position: absolute; top: 50%; z-index: 10;
+    transform: translateY(-50%);
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    color: var(--cream-bright); font-size: 22px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; backdrop-filter: blur(8px);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .media-break-btn:hover { background: rgba(78,196,255,0.16); border-color: var(--cyan-bright); color: var(--cyan-bright); }
+  .media-break-btn.mb-prev { left: 26px; }
+  .media-break-btn.mb-next { right: 26px; }
+  .media-break-dots {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 7px; z-index: 10;
+  }
+  .mb-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(242,238,227,0.32);
+    cursor: pointer; border: none; padding: 0;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .mb-dot.active { background: var(--cyan-bright); transform: scale(1.4); }
+  .media-break-label {
+    position: absolute; bottom: 30px; left: 28px; z-index: 10;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fog);
+  }
+  @media (max-width: 760px) {
+    .media-break { aspect-ratio: 4/3; }
+    .media-break-btn { width: 36px; height: 36px; font-size: 16px; }
+    .media-break-btn.mb-prev { left: 12px; }
+    .media-break-btn.mb-next { right: 12px; }
+    .media-break-label { display: none; }
+  }
+
+  /* ===== VIDEO BREAK — FULL-BLEED VIDEO ===== */
+  .vid-break {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/7;
+    overflow: hidden;
+    background: var(--navy-800);
+  }
+  .vid-break video { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+  .vid-break-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,23,41,0.4) 0%, rgba(10,23,41,0.1) 50%, rgba(10,23,41,0.72) 100%);
+  }
+  .vid-break-label {
+    position: absolute; bottom: 30px; left: 28px; z-index: 2;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fog);
+  }
+  @media (max-width: 760px) { .vid-break { aspect-ratio: 4/3; } }
+
+  /* ===== GAME FILM — FULL-BLEED VIDEO CAROUSEL (9 SPOTS) ===== */
+  .game-film {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--navy-800);
+  }
+  .game-film-track {
+    display: flex;
+    height: 100%;
+    will-change: transform;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .game-film-slide { min-width: 100%; height: 100%; position: relative; flex-shrink: 0; background: #000; }
+  .game-film-slide video {
+    width: 100%; height: 100%;
+    object-fit: contain; background: #000;
+    display: block;
+  }
+  .game-film-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,23,41,0.45) 0%, rgba(10,23,41,0) 22%, rgba(10,23,41,0) 78%, rgba(10,23,41,0.75) 100%);
+    pointer-events: none;
+  }
+  .game-film-btn {
+    position: absolute; top: 50%; z-index: 10;
+    transform: translateY(-50%);
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    color: var(--cream-bright); font-size: 22px; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; backdrop-filter: blur(8px);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .game-film-btn:hover { background: rgba(78,196,255,0.16); border-color: var(--cyan-bright); color: var(--cyan-bright); }
+  .game-film-btn.gf-prev { left: 26px; }
+  .game-film-btn.gf-next { right: 26px; }
+  .game-film-dots {
+    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 7px; z-index: 10;
+  }
+  .gf-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(242,238,227,0.32);
+    cursor: pointer; border: none; padding: 0;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .gf-dot.active { background: var(--cyan-bright); transform: scale(1.4); }
+  .game-film-label {
+    position: absolute; top: 24px; left: 28px; z-index: 10;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--fog);
+    background: rgba(10,23,41,0.55);
+    padding: 6px 12px; border-radius: 999px;
+    backdrop-filter: blur(6px);
+  }
+  .game-film-head {
+    text-align: center; padding: 56px 24px 28px;
+    background: var(--navy-900);
+  }
+  @media (max-width: 760px) {
+    .game-film { aspect-ratio: 9/16; }
+    .game-film-btn { width: 36px; height: 36px; font-size: 16px; }
+    .game-film-btn.gf-prev { left: 12px; }
+    .game-film-btn.gf-next { right: 12px; }
+    .game-film-head { padding: 40px 20px 22px; }
   }
 
   /* HOW */
@@ -559,18 +792,23 @@
   .pkg button:hover { background: var(--navy-700); }
   .pkg.featured button { background: var(--cyan); color: var(--navy-900); }
   .pkg.featured button:hover { background: var(--cyan-bright); transform: translateY(-2px); box-shadow: 0 10px 30px var(--cyan-glow); }
-  .pkg-pay-btn {
-    display: flex; width: 100%; margin-top: 10px;
-    padding: 13px; border-radius: 999px;
-    background: transparent; border: 1px solid rgba(242,238,227,0.22);
-    color: var(--cream-bright); font-family: "Inter", sans-serif;
-    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; cursor: pointer; transition: all 0.2s;
-    align-items: center; justify-content: center; gap: 8px;
+  .pkg-pay-now {
+    width: 100%; padding: 16px; margin-top: 10px;
+    background: transparent; color: var(--navy-900);
+    border: 1.5px solid var(--navy-900); border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 700;
+    cursor: pointer; transition: all 0.2s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    text-decoration: none; box-sizing: border-box;
   }
-  .pkg-pay-btn:hover { background: rgba(78,196,255,0.1); border-color: var(--cyan-bright); color: var(--cyan-bright); }
-  .pkg.featured .pkg-pay-btn { border-color: rgba(242,238,227,0.3); }
-  .pkg-pay-btn:disabled { opacity: 0.5; cursor: wait; }
+  .pkg-pay-now:hover { background: var(--navy-900); color: var(--cream-bright); }
+  .pkg-pay-note {
+    text-align: center; margin-top: 10px;
+    font-size: 11px; letter-spacing: 0.05em;
+    color: var(--navy-700); opacity: 0.65;
+  }
   @media (max-width: 960px) {
     .pkg-grid { grid-template-columns: 1fr; max-width: 560px; }
   }
@@ -1073,9 +1311,23 @@
 
   /* FINAL CTA */
   .final-cta {
-    padding: 140px 0; text-align: center;
+    padding: 140px 0; text-align: center; position: relative; overflow: hidden;
     background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(78, 196, 255, 0.2) 0%, transparent 70%);
   }
+  .cta-media {
+    position: absolute; inset: 0; z-index: 0;
+    overflow: hidden;
+  }
+  .cta-media-video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .cta-media-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,23,41,0.7) 0%, rgba(10,23,41,0.86) 60%, var(--navy-900) 100%);
+  }
+  .final-cta .wrap { position: relative; z-index: 1; }
   .final-cta h2 {
     font-family: "Anton", sans-serif;
     font-size: clamp(64px, 10vw, 140px);
@@ -1592,7 +1844,16 @@
     color: var(--cream-bright); flex-shrink: 0;
     border: 2px solid rgba(78,196,255,0.45);
     box-shadow: 0 0 16px rgba(78,196,255,0.2);
+    position: relative;
+    overflow: hidden;
   }
+  .testi-avatar img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+  .testi-avatar span { position: relative; z-index: 1; }
   .testi-name { font-weight: 700; font-size: 14px; color: var(--cream-bright); letter-spacing: 0.02em; }
   .testi-info { font-size: 12px; color: var(--fog); margin-top: 3px; line-height: 1.4; }
 
@@ -1831,248 +2092,6 @@
   }
   .transcript-caption a:hover { color: var(--cream-bright); border-color: var(--cream); }
   @media (max-width: 760px) { .transcript-sample { padding: 80px 0; } }
-
-  /* ═══════════════════════════════════════════
-     CHECKOUT OVERLAY
-  ═══════════════════════════════════════════ */
-  .co-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: none;
-    background: var(--navy-900);
-    overflow-y: auto;
-  }
-
-  .co-overlay.open { display: block; }
-
-  .co-wrap {
-    display: flex;
-    min-height: 100vh;
-  }
-
-  /* Left panel — dark branded */
-  .co-left {
-    width: 42%;
-    background: var(--navy-900);
-    border-right: 1px solid rgba(242,238,227,0.12);
-    padding: 52px 44px 60px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .co-left::before {
-    content: "";
-    position: absolute;
-    top: -60px; left: -60px;
-    width: 360px; height: 360px;
-    background: radial-gradient(circle, rgba(78,196,255,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  /* Right panel — white like Stripe */
-  .co-right {
-    flex: 1;
-    background: #ffffff;
-    padding: 52px 48px 60px;
-    display: flex;
-    flex-direction: column;
-    color: #111827;
-  }
-
-  @media (max-width: 720px) {
-    .co-wrap    { flex-direction: column; }
-    .co-left    { width: 100%; padding: 28px 20px 24px; border-right: none; border-bottom: 1px solid rgba(242,238,227,0.12); }
-    .co-right   { padding: 28px 20px 60px; }
-  }
-
-  /* Left: brand */
-  .co-brand {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 44px;
-  }
-
-  .co-brand-icon {
-    width: 36px; height: 36px;
-    background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-bright) 100%);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: "Anton", sans-serif;
-    font-size: 13px; color: var(--ink);
-    letter-spacing: 0.05em; flex-shrink: 0;
-  }
-
-  .co-brand-name {
-    font-family: "Anton", sans-serif;
-    font-size: 17px; letter-spacing: 0.05em; color: var(--cream);
-  }
-
-  .co-brand-name span { color: var(--cyan-bright); }
-
-  /* Left: amounts */
-  .co-pay-label   { font-size: 13px; color: var(--fog); margin-bottom: 5px; }
-  .co-pay-amount  { font-size: 42px; font-weight: 700; color: var(--cream); letter-spacing: -0.02em; line-height: 1; margin-bottom: 5px; }
-  .co-pay-cadence { font-size: 13px; color: var(--cyan); margin-bottom: 32px; }
-
-  /* Left: line item */
-  .co-line { padding: 16px 0; border-top: 1px solid rgba(242,238,227,0.12); }
-
-  .co-line-header {
-    display: flex; justify-content: space-between;
-    align-items: flex-start; gap: 12px; margin-bottom: 6px;
-  }
-
-  .co-line-name  { font-weight: 600; font-size: 14px; color: var(--cream); }
-  .co-line-price { font-weight: 600; font-size: 14px; color: var(--cream); white-space: nowrap; }
-  .co-line-desc  { font-size: 12px; color: var(--fog); line-height: 1.5; }
-
-  /* Left: totals */
-  .co-totals { padding-top: 18px; border-top: 1px solid rgba(242,238,227,0.12); }
-
-  .co-total-row {
-    display: flex; justify-content: space-between;
-    font-size: 13px; color: var(--fog); margin-bottom: 7px;
-  }
-
-  .co-total-row.final {
-    font-size: 15px; font-weight: 700; color: var(--cream);
-    padding-top: 11px; border-top: 1px solid rgba(242,238,227,0.12); margin-top: 4px;
-  }
-
-  .co-secure {
-    margin-top: 28px; font-size: 11px;
-    color: rgba(242,238,227,0.3);
-    display: flex; align-items: center; gap: 6px;
-  }
-
-  .co-secure svg { color: var(--cyan); flex-shrink: 0; }
-
-  .co-back {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 12px; color: var(--fog);
-    background: none; border: none; cursor: pointer;
-    margin-top: auto; padding-top: 28px;
-    transition: color 0.2s; font-family: inherit;
-  }
-
-  .co-back:hover { color: var(--cream); }
-
-  /* Right: form typography */
-  .co-form-heading {
-    font-size: 22px; font-weight: 700; color: #111827;
-    margin-bottom: 5px; letter-spacing: -0.01em;
-  }
-
-  .co-form-sub { font-size: 13px; color: #6b7280; margin-bottom: 26px; }
-
-  .co-section-lbl {
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 0.09em; text-transform: uppercase;
-    color: #374151; margin-bottom: 13px; margin-top: 22px;
-  }
-
-  /* Right: fields */
-  .co-field { margin-bottom: 13px; }
-
-  .co-field label {
-    display: block; font-size: 13px; font-weight: 500;
-    color: #374151; margin-bottom: 5px;
-  }
-
-  .co-field input,
-  .co-field select {
-    width: 100%;
-    background: #fff;
-    border: 1.5px solid #d1d5db;
-    border-radius: 7px;
-    padding: 11px 13px;
-    color: #111827;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    transition: border-color 0.18s, box-shadow 0.18s;
-    -webkit-appearance: none; appearance: none;
-  }
-
-  .co-field select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 13px center;
-    padding-right: 34px; cursor: pointer;
-  }
-
-  .co-field select option { background: #fff; color: #111827; }
-  .co-field input::placeholder { color: #9ca3af; }
-
-  .co-field input:focus,
-  .co-field select:focus {
-    outline: none;
-    border-color: var(--cyan);
-    box-shadow: 0 0 0 3px rgba(47,163,232,0.15);
-  }
-
-  .co-field input.co-err,
-  .co-field select.co-err {
-    border-color: #cc3333;
-    box-shadow: 0 0 0 3px rgba(204,51,51,0.1);
-  }
-
-  .co-field-err { font-size: 12px; color: #cc3333; margin-top: 4px; display: none; }
-  .co-field-err.show { display: block; }
-  .co-field-hint { font-size: 11px; color: #9ca3af; margin-top: 4px; }
-
-  .co-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 480px) { .co-two-col { grid-template-columns: 1fr; } }
-
-  /* Right: submit */
-  .co-submit {
-    width: 100%;
-    background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-bright) 100%);
-    color: var(--ink);
-    font-family: "Inter", sans-serif;
-    font-size: 15px; font-weight: 700;
-    padding: 14px 20px;
-    border: none; border-radius: 8px; cursor: pointer;
-    margin-top: 26px;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 4px 14px rgba(47,163,232,0.3);
-  }
-
-  .co-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(47,163,232,0.4); }
-  .co-submit:active:not(:disabled) { transform: translateY(0); }
-  .co-submit:disabled { opacity: 0.45; cursor: not-allowed; }
-
-  .co-submit .co-spin {
-    width: 17px; height: 17px;
-    border: 2px solid rgba(10,23,41,0.2);
-    border-top-color: var(--ink);
-    border-radius: 50%;
-    animation: coSpin 0.65s linear infinite;
-    display: none;
-  }
-
-  .co-submit.loading .co-spin { display: block; }
-  .co-submit.loading .co-lbl  { display: none; }
-  @keyframes coSpin { to { transform: rotate(360deg); } }
-
-  .co-pay-note {
-    font-size: 11px; color: #9ca3af;
-    text-align: center; margin-top: 11px;
-    display: flex; align-items: center; justify-content: center; gap: 5px;
-  }
-
-  .co-pay-note svg { color: #6b7280; }
-
-  .co-err-banner {
-    background: #fef2f2; border: 1px solid #fca5a5;
-    border-radius: 7px; padding: 11px 14px;
-    font-size: 13px; color: #b91c1c;
-    margin-bottom: 14px; display: none;
-  }
-
-  .co-err-banner.show { display: block; }
 </style>
 </head>
 <body>
@@ -2115,6 +2134,16 @@
 </nav>
 
 <section class="hero">
+  <!-- ░░ MEDIA SLOT — HERO BACKGROUND VIDEO ░░
+       Drop a looping background video at: media/hero-bg.mp4
+       Optional fallback poster image at: media/hero-bg-poster.jpg
+       Until those files exist, this slot is invisible and the hero looks exactly as it does today. -->
+  <div class="hero-media">
+    <video class="hero-media-video" autoplay muted loop playsinline poster="media/hero-bg-poster.jpg">
+      <source src="media/hero-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-media-overlay"></div>
+  </div>
   <div class="wrap">
     <div class="eyebrow-wrap reveal">
       <span class="eyebrow">Subject·Report · Athlete Development</span>
@@ -2144,6 +2173,71 @@
       <div><div class="num">100%</div><div class="label">Film-backed</div></div>
       <div><div class="num">1:1</div><div class="label">Placement</div></div>
     </div>
+  </div>
+</section>
+
+<!-- ░░ MEDIA — FULL-BLEED PHOTO CAROUSEL ░░
+     Real game/athlete photos, styled after the subjectmedias.com "On Site" photo break. -->
+<section class="media-break reveal" id="on-location" aria-label="Photos from athlete evaluations and events">
+  <div class="media-break-track" id="mediaBreakTrack">
+    <div class="media-break-slide"><img src="media/carousel/allen-coach.jpg" alt="Allen — coach on the sideline" loading="lazy" /><div class="media-break-overlay"></div></div>
+    <div class="media-break-slide"><img src="media/carousel/bergen-player.jpg" alt="Bergen Catholic player evaluation" loading="lazy" /><div class="media-break-overlay"></div></div>
+    <div class="media-break-slide"><img src="media/carousel/ant.jpg" alt="Ant — athlete evaluation" loading="lazy" /><div class="media-break-overlay"></div></div>
+    <div class="media-break-slide"><img src="media/carousel/peters-qb.jpg" alt="Saint Peter's — QB evaluation" loading="lazy" /><div class="media-break-overlay"></div></div>
+    <div class="media-break-slide"><img src="media/carousel/prosper-walnut-grove.jpg" alt="Prosper at Walnut Grove — on-site evaluation" loading="lazy" /><div class="media-break-overlay"></div></div>
+    <div class="media-break-slide"><img src="media/carousel/allen-players-talking.jpg" alt="Allen players talking on the sideline" loading="lazy" /><div class="media-break-overlay"></div></div>
+    <div class="media-break-slide"><img src="media/carousel/battle-bergen.jpg" alt="Battle at Bergen — game action" loading="lazy" /><div class="media-break-overlay"></div></div>
+    <div class="media-break-slide"><img src="media/carousel/st-joes.jpg" alt="St. Joe's — game action" loading="lazy" /><div class="media-break-overlay"></div></div>
+    <div class="media-break-slide"><img src="media/carousel/wax-brown.jpg" alt="Wax Brown — game action" loading="lazy" /><div class="media-break-overlay"></div></div>
+  </div>
+  <button class="media-break-btn mb-prev" type="button" onclick="mediaBreakNav(-1)" aria-label="Previous photo">&#8249;</button>
+  <button class="media-break-btn mb-next" type="button" onclick="mediaBreakNav(1)" aria-label="Next photo">&#8250;</button>
+  <div class="media-break-dots" id="mediaBreakDots"></div>
+  <div class="media-break-label">On location · Verified film, every sport</div>
+</section>
+
+<!-- ░░ MEDIA SLOT — "SEE IT IN ACTION" CAROUSEL ░░
+     Add photos or short video-still frames at: media/carousel-1.jpg ... media/carousel-6.jpg
+     (1200x1500 portrait or 1600x1000 landscape both work — they're cropped to fill the tile.)
+     Rename, add, or remove <div class="reel-slide"> blocks as needed, and update the
+     caption text in each .reel-caption to match what you drop in.
+     Empty/missing files are hidden automatically — nothing looks "broken" until you add real media. -->
+<section class="action-reel" id="in-action">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">See it in action</span>
+      <h2>Film. Grades.<br/><span class="line2">Real results.</span></h2>
+    </div>
+  </div>
+  <div class="reel-outer">
+    <div class="reel-track" id="reelTrack">
+      <div class="reel-slide">
+        <img src="media/event-photos/event-03-saint-peters-game.jpg" alt="Game day film capture" loading="lazy" onerror="this.style.display='none'" />
+        <div class="reel-caption">Game Day Film Capture</div>
+      </div>
+      <div class="reel-slide">
+        <img src="media/athlete-photos/ath-7v7-football.png" alt="7v7 showcase film" loading="lazy" onerror="this.style.display='none'" />
+        <div class="reel-caption">7v7 Showcase Coverage</div>
+      </div>
+      <div class="reel-slide">
+        <img src="media/event-photos/event-08-dsc01520.jpg" alt="Sideline film coverage" loading="lazy" onerror="this.style.display='none'" />
+        <div class="reel-caption">Sideline Film Coverage</div>
+      </div>
+      <div class="reel-slide">
+        <img src="media/athlete-photos/ath-lacrosse.png" alt="Lacrosse athlete evaluation" loading="lazy" onerror="this.style.display='none'" />
+        <div class="reel-caption">Multi-Sport Evaluation</div>
+      </div>
+      <div class="reel-slide">
+        <img src="media/event-photos/event-12-harm.jpg" alt="Verified film capture" loading="lazy" onerror="this.style.display='none'" />
+        <div class="reel-caption">Verified Film Capture</div>
+      </div>
+      <div class="reel-slide">
+        <img src="media/athlete-photos/ath-girls-flag.jpg" alt="Flag football athlete evaluation" loading="lazy" onerror="this.style.display='none'" />
+        <div class="reel-caption">Every Sport, Every Level</div>
+      </div>
+    </div>
+    <button class="reel-arrow prev" type="button" onclick="scrollReel(-1)" aria-label="Previous">&lsaquo;</button>
+    <button class="reel-arrow next" type="button" onclick="scrollReel(1)" aria-label="Next">&rsaquo;</button>
   </div>
 </section>
 
@@ -2218,6 +2312,15 @@
   </div>
 </section>
 
+<!-- ░░ MEDIA — FULL-BLEED VIDEO BREAK ░░ -->
+<div class="vid-break reveal">
+  <video autoplay muted loop playsinline>
+    <source src="media/game-film/carter-spring-game.mp4" type="video/mp4" />
+  </video>
+  <div class="vid-break-overlay"></div>
+  <div class="vid-break-label">Subject·Report · Highlight Reel</div>
+</div>
+
 <section class="rec-timeline" id="timeline">
   <div class="wrap">
     <div class="head">
@@ -2284,6 +2387,39 @@
   </div>
 </section>
 
+<!-- ░░ GAME FILM — 9 VIDEO SPOTS ░░
+     Review each spot below, then tell Kyron's assistant which spot # should hold which game
+     so they can be reordered. Currently filled in upload order. -->
+<div class="game-film-head reveal">
+  <span class="eyebrow">On-site recaps</span>
+  <h2>Game film.<br/><span class="line2">Every spot, every sideline.</span></h2>
+</div>
+<section class="game-film reveal" id="game-film" aria-label="Game film video carousel">
+  <div class="game-film-track" id="gameFilmTrack">
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/melissa-vs-anna.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 1 · Melissa vs Anna</div></div>
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/carter-dailey-highlight.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 2 · Carter Dailey</div></div>
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/north-forney.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 3 · North Forney</div></div>
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/trey.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 4 · Trey</div></div>
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/brady-quinn-highlight.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 5 · Brady Quinn</div></div>
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/ny-hustle-recap.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 6 · NY Hustle Recap</div></div>
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/gavin-sidwar-highlight.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 7 · Gavin Sidwar Highlight</div></div>
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/bump.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 8 · Bump</div></div>
+    <div class="game-film-slide"><video controls preload="metadata" playsinline><source src="media/game-film/howardd.mp4" type="video/mp4" /></video><div class="game-film-overlay"></div><div class="game-film-label">Spot 9 · Howardd</div></div>
+  </div>
+  <button class="game-film-btn gf-prev" type="button" onclick="gameFilmNav(-1)" aria-label="Previous video">&#8249;</button>
+  <button class="game-film-btn gf-next" type="button" onclick="gameFilmNav(1)" aria-label="Next video">&#8250;</button>
+  <div class="game-film-dots" id="gameFilmDots"></div>
+</section>
+
+<!-- ░░ MEDIA — FULL-BLEED VIDEO BREAK ░░ -->
+<div class="vid-break reveal">
+  <video autoplay muted loop playsinline>
+    <source src="media/game-film/tahmere-brown.mp4" type="video/mp4" />
+  </video>
+  <div class="vid-break-overlay"></div>
+  <div class="vid-break-label">Game film. Every spot, every sideline</div>
+</div>
+
 <section class="cards-section" id="what">
   <div class="wrap">
     <div class="head">
@@ -2340,7 +2476,8 @@
           <li>Graded evaluation (verified scouting report)</li>
         </ul>
         <button type="button" onclick="bookCall()">Book a call →</button>
-        <button type="button" class="pkg-pay-btn" onclick="directCheckout('transcript', this)">⚡ Pay now →</button>
+        <a href="https://buy.stripe.com/cNi14p9Wt5xLdtt9Vl6Ri00" class="pkg-pay-now" target="_blank" rel="noopener">Pay now →</a>
+        <div class="pkg-pay-note">No call required</div>
       </div>
 
       <!-- 2. RECRUITING PROGRAM -->
@@ -2358,7 +2495,6 @@
           <li>Live group Q&amp;A with recruiting staff</li>
         </ul>
         <button type="button" onclick="bookCall()">Book a call →</button>
-        <button type="button" class="pkg-pay-btn" onclick="directCheckout('program', this)">⚡ Pay now →</button>
       </div>
 
       <!-- 3. FULL ATHLETE PACKAGE (featured) -->
@@ -2380,7 +2516,6 @@
           <li>Access to the complete college coaches directory (all American football programs, all divisions)</li>
         </ul>
         <button type="button" onclick="bookCall()">Book a call →</button>
-        <button type="button" class="pkg-pay-btn" onclick="directCheckout('full', this)">⚡ Pay now →</button>
       </div>
     </div>
 
@@ -2417,7 +2552,10 @@
         <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="testi-quote">Before Subject·Report, I had film but no way to present it. The transcript gave coaches a specific reason to respond instead of just watch tape. I had three official visits within six weeks of sending it out.</p>
         <div class="testi-meta">
-          <div class="testi-avatar">JM</div>
+          <div class="testi-avatar">
+            <img src="media/testimonials/jordan-m.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <span>JM</span>
+          </div>
           <div>
             <div class="testi-name">Jordan M.</div>
             <div class="testi-info">Wide Receiver · Class of 2025 · Committed D2</div>
@@ -2429,7 +2567,10 @@
         <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="testi-quote">Basketball recruiting is just as overlooked as football when it comes to film presentation. My transcript showed coaches my IQ, my spacing, my effort — not just highlight dunks. Got my first D1 offer 30 days after sending it out. This process works for any sport.</p>
         <div class="testi-meta">
-          <div class="testi-avatar">MJ</div>
+          <div class="testi-avatar">
+            <img src="media/testimonials/marcus-j.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <span>MJ</span>
+          </div>
           <div>
             <div class="testi-name">Marcus J.</div>
             <div class="testi-info">Guard · Basketball · Class of 2026 · D1 Commit</div>
@@ -2441,7 +2582,10 @@
         <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="testi-quote">We had no idea how the recruiting process actually worked until the 6-week program. My son went from zero coach contact to four offers. The blueprint was worth every dollar — it was the roadmap we never had.</p>
         <div class="testi-meta">
-          <div class="testi-avatar">TR</div>
+          <div class="testi-avatar">
+            <img src="media/testimonials/terrence-r.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <span>TR</span>
+          </div>
           <div>
             <div class="testi-name">Terrence R.</div>
             <div class="testi-info">Parent · Linebacker · Class of 2026</div>
@@ -2453,7 +2597,10 @@
         <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="testi-quote">The film breakdown was honest. They told me exactly what I was doing wrong technically and what I needed to fix before sending my tape out. That honesty saved me six months of getting no responses.</p>
         <div class="testi-meta">
-          <div class="testi-avatar">DW</div>
+          <div class="testi-avatar">
+            <img src="media/testimonials/darius-w.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <span>DW</span>
+          </div>
           <div>
             <div class="testi-name">Darius W.</div>
             <div class="testi-info">Offensive Lineman · Class of 2025 · FCS Commit</div>
@@ -2465,7 +2612,10 @@
         <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <p class="testi-quote">I didn't know anything about NIL or what happens financially when you sign. The financial literacy piece alone was worth the investment. I walked into signing day actually understanding what I was agreeing to.</p>
         <div class="testi-meta">
-          <div class="testi-avatar">KA</div>
+          <div class="testi-avatar">
+            <img src="media/testimonials/kayla-a.jpg" alt="" loading="lazy" onerror="this.style.display='none'" />
+            <span>KA</span>
+          </div>
           <div>
             <div class="testi-name">Kayla A.</div>
             <div class="testi-info">Track &amp; Field · Class of 2024 · NCAA D1</div>
@@ -2556,7 +2706,6 @@
           </div>
           <p class="prospect-billing">Billed monthly for coaches database access. Cancel anytime.</p>
           <button class="prospect-cta" onclick="openModal('prospect')">Get Database Access →</button>
-          <button type="button" class="pkg-pay-btn" style="margin-top:12px;" onclick="directCheckout('prospect', this)">⚡ Subscribe now →</button>
           <noscript>
             <div class="no-js-booking"><a href="booking-fallback.html">Book without JavaScript</a></div>
           </noscript>
@@ -2646,6 +2795,12 @@
 </section>
 
 <section class="final-cta">
+  <div class="cta-media">
+    <video class="cta-media-video" autoplay muted loop playsinline>
+      <source src="media/game-film/derrick.mp4" type="video/mp4" />
+    </video>
+    <div class="cta-media-overlay"></div>
+  </div>
   <div class="wrap">
     <h2 class="reveal">Stop guessing.<br/><span>Start getting recruited.</span></h2>
     <p class="reveal">Book a call, tell us your story, and find out which package fits your situation.</p>
@@ -3265,6 +3420,74 @@
     openBookingIntakeModal();
   }
 
+  function scrollReel(dir) {
+    const track = document.getElementById('reelTrack');
+    if (!track) return;
+    const slide = track.querySelector('.reel-slide');
+    const amount = slide ? slide.getBoundingClientRect().width + 20 : 300;
+    track.scrollBy({ left: dir * amount, behavior: 'smooth' });
+  }
+
+  /* ===== FULL-BLEED MEDIA BREAK CAROUSEL ===== */
+  let mediaBreakIdx = 0;
+  function mediaBreakNav(dir) {
+    const track = document.getElementById('mediaBreakTrack');
+    if (!track) return;
+    const slides = track.querySelectorAll('.media-break-slide');
+    const total = slides.length;
+    if (!total) return;
+    mediaBreakIdx = (mediaBreakIdx + dir + total) % total;
+    track.style.transform = 'translateX(-' + (mediaBreakIdx * 100) + '%)';
+    document.querySelectorAll('#mediaBreakDots .mb-dot').forEach((d, i) => d.classList.toggle('active', i === mediaBreakIdx));
+  }
+  (function initMediaBreakDots() {
+    const track = document.getElementById('mediaBreakTrack');
+    const dotsEl = document.getElementById('mediaBreakDots');
+    if (!track || !dotsEl) return;
+    const slides = track.querySelectorAll('.media-break-slide');
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'mb-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+      d.onclick = () => { mediaBreakIdx = i - 1; mediaBreakNav(1); };
+      dotsEl.appendChild(d);
+    });
+  })();
+  (function autoAdvanceMediaBreak() {
+    const track = document.getElementById('mediaBreakTrack');
+    if (!track) return;
+    setInterval(() => { mediaBreakNav(1); }, 5500);
+  })();
+
+  /* ===== GAME FILM — 9-SPOT VIDEO CAROUSEL ===== */
+  let gameFilmIdx = 0;
+  function gameFilmNav(dir) {
+    const track = document.getElementById('gameFilmTrack');
+    if (!track) return;
+    const slides = track.querySelectorAll('.game-film-slide');
+    const total = slides.length;
+    if (!total) return;
+    slides[gameFilmIdx].querySelectorAll('video').forEach(v => v.pause());
+    gameFilmIdx = (gameFilmIdx + dir + total) % total;
+    track.style.transform = 'translateX(-' + (gameFilmIdx * 100) + '%)';
+    document.querySelectorAll('#gameFilmDots .gf-dot').forEach((d, i) => d.classList.toggle('active', i === gameFilmIdx));
+  }
+  (function initGameFilmDots() {
+    const track = document.getElementById('gameFilmTrack');
+    const dotsEl = document.getElementById('gameFilmDots');
+    if (!track || !dotsEl) return;
+    const slides = track.querySelectorAll('.game-film-slide');
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'gf-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to video spot ' + (i + 1));
+      d.onclick = () => { gameFilmIdx = i - 1; gameFilmNav(1); };
+      dotsEl.appendChild(d);
+    });
+  })();
+
   function openBookingIntakeModal() {
     lastModalTrigger = document.activeElement;
     trackEvent('booking_intake_open', {});
@@ -3367,7 +3590,7 @@
           <label for="biChallenge">Biggest recruiting challenge right now <span style="color:var(--fog);font-weight:400">(optional)</span></label>
           <textarea id="biChallenge" rows="3" placeholder="e.g. Coaches aren\u2019t responding. I don\u2019t know where to start. I\u2019ve had interest but no offers…"></textarea>
         </div>
-        <button type="submit" class="mod-submit" id="intakeSubmitBtn" id="intakeSubmitBtn">Tell us your situation &amp; open scheduler →</button>
+        <button type="submit" class="mod-submit" id="intakeSubmitBtn">Tell us your situation &amp; open scheduler →</button>
       </form>
     `;
     document.getElementById('modal').classList.add('open');
@@ -4253,165 +4476,6 @@
     applyVisibility();
   })();
 
-
-  const CO_PLANS = {
-    transcript: {
-      name:    "Player Transcript",
-      desc:    "Player transcript (downloadable), recruiting tape, written player summary, and graded scouting evaluation. 48-hour turnaround.",
-      price:   "$249",
-      amount:  "249.00",
-      cadence: "One-time payment",
-      link:    "https://buy.stripe.com/cNi14p9Wt5xLdtt9Vl6Ri00",
-    },
-    program: {
-      name:    "Recruiting Program",
-      desc:    "6-week program — weekly sessions, personalized blueprint, advanced film breakdown, target school list, outreach templates, live Q&A.",
-      price:   "$1,500",
-      amount:  "1,500.00",
-      cadence: "One-time · 6 weeks",
-      link:    "https://buy.stripe.com/14A4gB3y50dr3ST3wX6Ri01",
-    },
-    full: {
-      name:    "College Placement",
-      desc:    "Complete package — 6-week program, 1:1 placement specialist, NIL readiness, media strategy, private coaches database, personalized campaign rollout.",
-      price:   "$5,000",
-      amount:  "5,000.00",
-      cadence: "One-time · Full package",
-      link:    "https://buy.stripe.com/4gM7sN3y5gcp9dd3wX6Ri02",
-    },
-    prospect: {
-      name:    "College Directory",
-      desc:    "Monthly access to the full coaches database — D1, FCS, D2, D3, JUCO, NAIA, and post-grad academies. Search by level and region.",
-      price:   "$99",
-      amount:  "99.00",
-      cadence: "Per month · Cancel anytime",
-      link:    "https://buy.stripe.com/14AcN70lTe4h8996J96Ri03",
-    },
-  };
-
-  let _coPlanKey = null;
-
-  function directCheckout(planKey) {
-    const plan = CO_PLANS[planKey];
-    if (!plan) return;
-    _coPlanKey = planKey;
-    trackEvent("direct_checkout_click", { pkg: planKey });
-
-    // Populate left panel
-    document.getElementById("coAmount").textContent   = plan.price;
-    document.getElementById("coCadence").textContent  = plan.cadence;
-    document.getElementById("coLineName").textContent = plan.name;
-    document.getElementById("coLinePrice").textContent= plan.price;
-    document.getElementById("coLineDesc").textContent = plan.desc;
-    document.getElementById("coSubtotal").textContent = plan.price;
-    document.getElementById("coTotal").textContent    = "$" + plan.amount;
-
-    // Reset form
-    document.getElementById("coForm").reset();
-    ["coFn","coLn","coEm","coSp","coCy"].forEach(id => {
-      document.getElementById(id).classList.remove("co-err");
-      document.getElementById(id + "-e").classList.remove("show");
-    });
-    document.getElementById("coErrBanner").classList.remove("show");
-    const btn = document.getElementById("coSubmit");
-    btn.disabled = false;
-    btn.classList.remove("loading");
-
-    // Open overlay
-    const ov = document.getElementById("coOverlay");
-    ov.classList.add("open");
-    ov.scrollTop = 0;
-    document.body.style.overflow = "hidden";
-    document.getElementById("coFn").focus();
-  }
-
-  function closeCheckout() {
-    document.getElementById("coOverlay").classList.remove("open");
-    document.body.style.overflow = "";
-  }
-
-  // Close on Escape
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") closeCheckout();
-  });
-
-  // Form validation & submit
-  (function() {
-    const RULES = [
-      { id: "coFn", check: v => v.trim().length > 0,                        msg: "Required" },
-      { id: "coLn", check: v => v.trim().length > 0,                        msg: "Required" },
-      { id: "coEm", check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), msg: "Enter a valid email" },
-      { id: "coSp", check: v => v.trim().length > 0,                        msg: "Required" },
-      { id: "coCy", check: v => v !== "",                                   msg: "Select your class year" },
-    ];
-
-    function validateCo() {
-      let ok = true;
-      RULES.forEach(({ id, check, msg }) => {
-        const el  = document.getElementById(id);
-        const err = document.getElementById(id + "-e");
-        if (!check(el.value)) {
-          el.classList.add("co-err"); err.textContent = msg; err.classList.add("show"); ok = false;
-        } else {
-          el.classList.remove("co-err"); err.classList.remove("show");
-        }
-      });
-      return ok;
-    }
-
-    RULES.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.addEventListener("input",  () => { el.classList.remove("co-err"); document.getElementById(id + "-e").classList.remove("show"); });
-        el.addEventListener("change", () => { el.classList.remove("co-err"); document.getElementById(id + "-e").classList.remove("show"); });
-      }
-    });
-
-    document.addEventListener("submit", async function(e) {
-      if (e.target.id !== "coForm") return;
-      e.preventDefault();
-      if (document.getElementById("coHp").value) return;
-      if (!validateCo()) return;
-
-      const btn    = document.getElementById("coSubmit");
-      const banner = document.getElementById("coErrBanner");
-      btn.disabled = true;
-      btn.classList.add("loading");
-      banner.classList.remove("show");
-
-      const plan  = CO_PLANS[_coPlanKey];
-      const first = document.getElementById("coFn").value.trim();
-      const last  = document.getElementById("coLn").value.trim();
-      const email = document.getElementById("coEm").value.trim();
-      const phone = document.getElementById("coPh").value.trim();
-      const sport = document.getElementById("coSp").value.trim();
-      const year  = document.getElementById("coCy").value;
-      const film  = document.getElementById("coFl").value.trim();
-
-      // Save to Supabase (non-blocking)
-      try {
-        await fetch("https://nebdqnlpuxcfwmyvmyie.supabase.co/rest/v1/athletes", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lYmRxbmxwdXhjZndteXZteWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0NTgyNjUsImV4cCI6MjA5MjAzNDI2NX0.XMEYpNiZ8NdVPMlgQphwcY5S-Pq7HsBMq48CeZD6Ac4",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lYmRxbmxwdXhjZndteXZteWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0NTgyNjUsImV4cCI6MjA5MjAzNDI2NX0.XMEYpNiZ8NdVPMlgQphwcY5S-Pq7HsBMq48CeZD6Ac4",
-            "Prefer": "return=minimal"
-          },
-          body: JSON.stringify({
-            name: first + " " + last, email, phone, sport,
-            class_year: year, film_link: film,
-            package: _coPlanKey, status: "checkout_started",
-            created_at: new Date().toISOString()
-          })
-        });
-      } catch (_) {}
-
-      // Send to Stripe with email pre-filled
-      window.location.href = plan.link + "?prefilled_email=" + encodeURIComponent(email);
-    });
-  })();
-
   document.addEventListener('click', (event) => {
     const trigger = event.target.closest('a, button');
     if (!trigger) return;
@@ -4432,109 +4496,188 @@
 </script>
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-<!-- ═══════════════════ CHECKOUT OVERLAY ═══════════════════ -->
-<div id="coOverlay" class="co-overlay" role="dialog" aria-modal="true" aria-label="Checkout">
-  <div class="co-wrap">
+<!-- ══════════════════════════
+     10% OFFER POPUP — triggers at 45s
+══════════════════════════ -->
+<style>
+  .offer-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(5, 12, 22, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+  .offer-overlay.show { opacity: 1; visibility: visible; }
+  .offer-modal {
+    background: linear-gradient(180deg, var(--navy-800) 0%, var(--navy-900) 100%);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    max-width: 520px; width: 100%;
+    padding: 48px 40px 40px;
+    position: relative;
+    color: var(--cream);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    animation: offerIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  @keyframes offerIn {
+    from { transform: translateY(32px) scale(0.96); opacity: 0; }
+    to   { transform: translateY(0)    scale(1);    opacity: 1; }
+  }
+  .offer-close {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(242, 238, 227, 0.06); border: none; border-radius: 50%;
+    width: 32px; height: 32px; cursor: pointer; color: var(--fog);
+    font-size: 18px; line-height: 32px; text-align: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  .offer-close:hover { background: rgba(242, 238, 227, 0.12); color: var(--cream-bright); }
+  .offer-badge {
+    display: inline-block;
+    background: var(--cyan); color: var(--navy-900);
+    font-family: 'Anton', sans-serif; font-size: 13px; letter-spacing: .08em;
+    padding: 4px 12px; border-radius: 40px; margin-bottom: 16px;
+  }
+  .offer-headline {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.05; color: var(--cream-bright);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .offer-headline span { color: var(--cyan-bright); }
+  .offer-sub {
+    color: var(--fog); font-size: 14px; margin-bottom: 28px; line-height: 1.6;
+  }
+  .offer-form .form-row { display: flex; gap: 3px; margin-bottom: 3px; }
+  .offer-form .form-field { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .offer-form label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fog); }
+  .offer-form input, .offer-form select, .offer-form textarea {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px; color: var(--cream-bright);
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    padding: 10px 14px; width: 100%; outline: none;
+    transition: border-color 0.2s;
+  }
+  .offer-form input:focus, .offer-form select:focus, .offer-form textarea:focus {
+    border-color: var(--cyan-bright);
+  }
+  .offer-form textarea { resize: vertical; min-height: 80px; }
+  .offer-submit {
+    width: 100%; margin-top: 16px;
+    background: var(--cyan); color: var(--navy-900);
+    border: none; border-radius: 10px;
+    font-family: 'Anton', sans-serif; font-size: 16px; letter-spacing: .06em;
+    padding: 14px; cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s, background 0.2s;
+  }
+  .offer-submit:hover { background: var(--cyan-bright); transform: translateY(-1px); }
+  .offer-fine {
+    text-align: center; font-size: 11px; color: var(--fog);
+    opacity: 0.7;
+    margin-top: 12px;
+  }
+  @media (max-width: 540px) {
+    .offer-modal { padding: 36px 24px 28px; }
+    .offer-form .form-row { flex-direction: column; }
+  }
+</style>
 
-    <!-- LEFT -->
-    <div class="co-left">
-      <div class="co-brand">
-        <div class="co-brand-icon">SR</div>
-        <div class="co-brand-name">Subject<span>report</span></div>
+<div class="offer-overlay" id="offerOverlay" role="dialog" aria-modal="true" aria-label="Exclusive offer">
+  <div class="offer-modal">
+    <button class="offer-close" onclick="closeOffer()" aria-label="Close">✕</button>
+    <div class="offer-badge">LIMITED OFFER</div>
+    <div class="offer-headline">Get <span>10% Off</span><br>Your First Transcript</div>
+    <p class="offer-sub">Still deciding? Lock in your discount now — drop your info and we'll reach out to get your evaluation started.</p>
+    <form class="offer-form" onsubmit="submitOffer(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="srname">Name *</label>
+          <input type="text" id="srname" placeholder="Your full name" autocomplete="name" />
+        </div>
+        <div class="form-field">
+          <label for="sremail">Email *</label>
+          <input type="email" id="sremail" placeholder="you@email.com" autocomplete="email" />
+        </div>
       </div>
-      <div class="co-pay-label">Pay Subjectreport</div>
-      <div class="co-pay-amount" id="coAmount"></div>
-      <div class="co-pay-cadence" id="coCadence"></div>
-      <div class="co-line">
-        <div class="co-line-header">
-          <span class="co-line-name" id="coLineName"></span>
-          <span class="co-line-price" id="coLinePrice"></span>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="srphone">Phone Number</label>
+          <input type="tel" id="srphone" placeholder="(555) 000-0000" autocomplete="tel" />
         </div>
-        <div class="co-line-desc" id="coLineDesc"></div>
+        <div class="form-field">
+          <label for="srtype">I'm a...</label>
+          <select id="srtype">
+            <option value="">Select one</option>
+            <option>Parent / Athlete</option>
+            <option>High School Coach</option>
+            <option>Club Coach / AD</option>
+            <option>College Recruiter</option>
+            <option>Other</option>
+          </select>
+        </div>
       </div>
-      <div class="co-totals">
-        <div class="co-total-row"><span>Subtotal</span><span id="coSubtotal"></span></div>
-        <div class="co-total-row final"><span>Total due</span><span id="coTotal"></span></div>
+      <div class="form-row">
+        <div class="form-field">
+          <label for="srmsg">Tell us about your athlete *</label>
+          <textarea id="srmsg" placeholder="Sport, class year, position, what you're looking for..."></textarea>
+        </div>
       </div>
-      <div class="co-secure">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Secured by 256-bit SSL encryption
-      </div>
-      <button type="button" class="co-back" onclick="closeCheckout()">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        Back to packages
-      </button>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="co-right">
-      <div class="co-form-heading">Complete your order</div>
-      <div class="co-form-sub">Fill in your details &mdash; you'll be taken to secure payment next.</div>
-      <div id="coErrBanner" class="co-err-banner"></div>
-      <form id="coForm" novalidate>
-        <div class="co-section-lbl">Contact info</div>
-        <div class="co-two-col">
-          <div class="co-field">
-            <label for="coFn">First name *</label>
-            <input id="coFn" type="text" placeholder="Marcus" autocomplete="given-name" />
-            <div class="co-field-err" id="coFn-e">Required</div>
-          </div>
-          <div class="co-field">
-            <label for="coLn">Last name *</label>
-            <input id="coLn" type="text" placeholder="Johnson" autocomplete="family-name" />
-            <div class="co-field-err" id="coLn-e">Required</div>
-          </div>
-        </div>
-        <div class="co-field">
-          <label for="coEm">Email address *</label>
-          <input id="coEm" type="email" placeholder="you@example.com" autocomplete="email" />
-          <div class="co-field-err" id="coEm-e">Enter a valid email</div>
-        </div>
-        <div class="co-field">
-          <label for="coPh">Phone number</label>
-          <input id="coPh" type="tel" placeholder="(555) 000-0000" autocomplete="tel" />
-        </div>
-        <div class="co-section-lbl">Athlete info</div>
-        <div class="co-two-col">
-          <div class="co-field">
-            <label for="coSp">Sport &amp; position *</label>
-            <input id="coSp" type="text" placeholder="Football - WR" />
-            <div class="co-field-err" id="coSp-e">Required</div>
-          </div>
-          <div class="co-field">
-            <label for="coCy">Class year *</label>
-            <select id="coCy">
-              <option value="">Select year</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
-              <option value="postgrad">Post-grad / Transfer</option>
-            </select>
-            <div class="co-field-err" id="coCy-e">Required</div>
-          </div>
-        </div>
-        <div class="co-field">
-          <label for="coFl">Hudl / film link <span style="color:#9ca3af;font-weight:400">(optional)</span></label>
-          <input id="coFl" type="url" placeholder="https://hudl.com/video/..." />
-          <div class="co-field-hint">Share your highlight reel so our staff can review your film.</div>
-        </div>
-        <input id="coHp" type="text" style="display:none" tabindex="-1" autocomplete="off" />
-        <button type="submit" class="co-submit" id="coSubmit">
-          <span class="co-lbl">Proceed to payment &rarr;</span>
-          <span class="co-spin"></span>
-        </button>
-        <div class="co-pay-note">
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          Powered by Stripe &middot; Your card details are never stored here
-        </div>
-      </form>
-    </div>
-
+      <button type="submit" class="offer-submit">CLAIM MY 10% OFF →</button>
+      <p class="offer-fine">One-time offer · No spam · We respond within 24 hours</p>
+    </form>
   </div>
 </div>
-<!-- ═══════════════════ END CHECKOUT OVERLAY ═══════════════════ -->
+
+<script>
+  // ── 45-second offer popup ──
+  (function() {
+    var shown = sessionStorage.getItem('srOfferShown');
+    if (!shown) {
+      setTimeout(function() {
+        document.getElementById('offerOverlay').classList.add('show');
+        sessionStorage.setItem('srOfferShown', '1');
+      }, 45000);
+    }
+  })();
+
+  function closeOffer() {
+    document.getElementById('offerOverlay').classList.remove('show');
+  }
+
+  document.getElementById('offerOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeOffer();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeOffer();
+  });
+
+  function submitOffer(e) {
+    e.preventDefault();
+    var name  = document.getElementById('srname').value.trim();
+    var email = document.getElementById('sremail').value.trim();
+    var msg   = document.getElementById('srmsg').value.trim();
+    if (!name || !email || !msg) {
+      alert('Please fill in your name, email, and athlete details.');
+      return;
+    }
+    var subject = encodeURIComponent('10% Offer Claim — Subjectreport');
+    var body = encodeURIComponent(
+      '*** 10% DISCOUNT CLAIM ***\n\n' +
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Phone: ' + document.getElementById('srphone').value + '\n' +
+      'Type: ' + document.getElementById('srtype').value + '\n\n' +
+      'Athlete Details:\n' + msg
+    );
+    window.location.href = 'mailto:hello@subjectreport.com?subject=' + subject + '&body=' + body;
+    closeOffer();
+  }
+</script>
+
 </body>
 </html>
+</center>
