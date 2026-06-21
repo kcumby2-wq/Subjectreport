@@ -29,6 +29,10 @@ An analyst who respects the family's intelligence. Calm, specific, verified. The
 - Dark navy stadium BG · floodlights upper right · electric blue #4DB8FF accents · frosted glass pill rows · condensed white uppercase headlines
 - Ring logo top right · www.SubjectReport.com bottom left
 - Week 6 badge = gold
+- Wordmark renders as **SUBJECT·REPORT** (center dot, not a hyphen or slash) in primary use; **SUBJECT/REPORT** appears in the footer — default to the center-dot form unless matching the footer specifically
+- Site photography is on-location game/sideline/combine film — verified, unstaged, not stock photography or studio headshots
+- Stat chips used as proof points, not decoration: **350+** (coaching staffs on the grading platform), **48h** (film to transcript), **1:1** (placement specialist), **100%** (film-backed grading) — pull from this exact set rather than inventing new stat chips
+- The sample transcript document itself is the hero visual whenever a graphic needs to "show the work" — grades + linked clips + plain layout, not a highlight-reel aesthetic
 
 ## For Subject Media Cross-Sell Copy
 
