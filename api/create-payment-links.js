@@ -16,29 +16,41 @@ if (!STRIPE_SECRET_KEY) {
   process.exit(1);
 }
 
+// Current ladder — matches index.html + admin.html + revenue.js.
+// FILL productId with the real prod_XXX after creating each in the Stripe dashboard;
+// the transcript one below is the existing product from the previous ladder (kept
+// intentionally — same evaluation, new price at $999). The four new-tier products
+// need to be created in Stripe first (Products → New product), then their ids
+// pasted here before this script will emit their payment links.
 const PRODUCTS = [
   {
     key:       "transcript",
-    productId: "prod_Ued9xtI4Zk9QIY",
+    productId: "prod_Ued9xtI4Zk9QIY",   // existing — set price to $999 in Stripe
     name:      "Player Transcript",
     recurring: false,
   },
   {
-    key:       "program",
-    productId: "prod_UedA0TJ1E1cXAF",
-    name:      "Recruiting Program",
+    key:       "verified-core",
+    productId: "prod_REPLACE_ME_CORE",   // TODO: create in Stripe, paste id here
+    name:      "Verified Season · Core",
     recurring: false,
   },
   {
-    key:       "full",
-    productId: "prod_UedB3S7enT3xry",
-    name:      "Full Athlete Package",
+    key:       "verified-complete",
+    productId: "prod_REPLACE_ME_COMPLETE", // TODO
+    name:      "Verified Season · Complete",
     recurring: false,
   },
   {
-    key:       "prospect",
-    productId: "prod_UedDdoGOdsF6Hc",
-    name:      "Prospect Membership",
+    key:       "verified-managed",
+    productId: "prod_REPLACE_ME_MANAGED",  // TODO
+    name:      "Verified Season · Managed",
+    recurring: false,
+  },
+  {
+    key:       "retainer",
+    productId: "prod_REPLACE_ME_RETAINER", // TODO — recurring monthly
+    name:      "Development Retainer",
     recurring: true,
   },
 ];

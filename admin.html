@@ -589,9 +589,10 @@
           <select id="packageFilter" onchange="renderAthletes()">
             <option value="">All packages</option>
             <option value="transcript">Player Transcript</option>
-            <option value="program">Recruiting Program</option>
-            <option value="full">Full Athlete Package</option>
-            <option value="prospect">Prospect Membership</option>
+            <option value="verified-core">Verified Season · Core</option>
+            <option value="verified-complete">Verified Season · Complete</option>
+            <option value="verified-managed">Verified Season · Managed</option>
+            <option value="retainer">Development Retainer</option>
           </select>
         </div>
         <div id="athletesTable"></div>
@@ -756,10 +757,11 @@
         <div class="field">
           <label>Package</label>
           <select id="aPackage" required onchange="updatePriceField()">
-            <option value="transcript">Player Transcript · $249</option>
-            <option value="program">Recruiting Program · $1,500</option>
-            <option value="full">Full Athlete Package · $5,000</option>
-            <option value="prospect">Prospect Membership · $99/mo</option>
+            <option value="transcript">Player Transcript · $999</option>
+            <option value="verified-core">Verified Season · Core · $1,500/season</option>
+            <option value="verified-complete">Verified Season · Complete · $2,800/season</option>
+            <option value="verified-managed">Verified Season · Managed · $4,500/season</option>
+            <option value="retainer">Development Retainer · $1,200/mo</option>
           </select>
         </div>
         <div class="field">
@@ -815,10 +817,11 @@
   };
 
   const PACKAGE_META = {
-    transcript: { name: "Player Transcript", price: 249, recurring: false },
-    program:    { name: "Recruiting Program", price: 1500, recurring: false },
-    full:       { name: "Full Athlete Package", price: 5000, recurring: false },
-    prospect:   { name: "Prospect Membership", price: 99, recurring: true },
+    transcript:          { name: "Player Transcript",           price: 999,  recurring: false },
+    "verified-core":     { name: "Verified Season · Core",      price: 1500, recurring: false },
+    "verified-complete": { name: "Verified Season · Complete",  price: 2800, recurring: false },
+    "verified-managed":  { name: "Verified Season · Managed",   price: 4500, recurring: false },
+    retainer:            { name: "Development Retainer",        price: 1200, recurring: true  },
   };
 
   // ===================== SUPABASE CONFIG =====================

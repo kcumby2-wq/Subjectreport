@@ -4,11 +4,24 @@
 
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 
+// Stripe product-id → human name for the admin dashboard "revenue by product" panel.
+// The old-tier entries stay historical: past customers paid at those prices under those
+// names, and removing them would relabel their rows to "Other" in the dashboard.
+// After creating the new-tier products in Stripe, paste the real prod_XXX ids into the
+// slots below (currently commented) so new revenue lands under its true name.
 const PRODUCT_NAMES = {
-  "prod_Ued9xtI4Zk9QIY": "Player Transcript",
-  "prod_UedA0TJ1E1cXAF": "Recruiting Program",
-  "prod_UedB3S7enT3xry": "Full Athlete Package",
-  "prod_UedDdoGOdsF6Hc": "Prospect Membership",
+  // ─── Current ladder (fill prod_XXX after creating in Stripe) ─────────
+  // "prod_XXXXXXXXXXXXXXX": "Player Transcript",              // $999
+  // "prod_XXXXXXXXXXXXXXX": "Verified Season · Core",         // $1,500/season
+  // "prod_XXXXXXXXXXXXXXX": "Verified Season · Complete",     // $2,800/season
+  // "prod_XXXXXXXXXXXXXXX": "Verified Season · Managed",      // $4,500/season
+  // "prod_XXXXXXXXXXXXXXX": "Development Retainer",           // $1,200/mo
+
+  // ─── Historical (kept so past-customer rows render correctly) ────────
+  "prod_Ued9xtI4Zk9QIY": "Player Transcript (legacy $249)",
+  "prod_UedA0TJ1E1cXAF": "Recruiting Program (retired)",
+  "prod_UedB3S7enT3xry": "Full Athlete Package (retired)",
+  "prod_UedDdoGOdsF6Hc": "Prospect Membership (retired)",
 };
 
 async function stripeGet(path) {

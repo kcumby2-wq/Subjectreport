@@ -92,10 +92,11 @@ That's it. No build process, no npm, no compilation.
 4. Transcript Sample (product mockup)
 5. Recruiting Timeline
 6. What You Get (cards)
-7. Packages ($249 / $1,500 / $5,000)
+7. Packages · The Ladder ($999 Transcript · Verified Season $1,500/$2,800/$4,500 · $1,200/mo Dev Retainer)
+   · How we get paid (transparency block)
 8. Testimonials (5 cards)
 9. Education Hub
-10. Prospect Membership ($99/mo)
+10. (retired · Prospect Membership · replaced by the Verified Season ladder)
 11. Proof Stats
 12. FAQ
 13. Final CTA
