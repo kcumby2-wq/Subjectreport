@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/onboarding",
+      "destination": "https://toj-csv-app.onrender.com/api/onboarding"
+    }
+  ]
+}
